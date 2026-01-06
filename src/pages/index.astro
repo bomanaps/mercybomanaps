@@ -1,0 +1,294 @@
+---
+import Layout from '../layouts/Layout.astro';
+
+const navLinks = [
+  { label: 'GitHub', url: 'https://github.com/bomanaps' },
+  { label: 'X', url: 'https://x.com/naps_thelma' },
+  { label: 'Email', url: 'mailto:mercy.boma35@yahoo.com' },
+  { label: 'Resume', url: '/resume.pdf' },
+  { label: 'Writings', url: 'https://hackmd.io/@bomanaps' },
+];
+
+const openSourceProjects = [
+  {
+    name: 'Zeam',
+    description: 'Zig implementation of Beam Chain',
+    url: 'https://github.com/blockblaz/zeam/issues?q=is%3Apr%20state%3Aclosed%20author%3Abomanaps'
+  },
+  {
+    name: 'Lean Quickstart',
+    description: 'A utility to quickly spin up a localnet of lean (multi-client) nodes',
+    url: 'https://github.com/blockblaz/lean-quickstart'
+  },
+  {
+    name: 'Hash-Sig CLI',
+    description: 'CLI for hash-based signatures for post-quantum cryptography',
+    url: 'https://github.com/blockblaz/hash-sig-cli'
+  },
+  {
+    name: 'Lodestar',
+    description: 'Ethereum consensus client in TypeScript',
+    url: 'https://github.com/ChainSafe/lodestar/pulls?q=is%3Apr+bomanaps+is%3Aclosed'
+  },
+  {
+    name: 'pylibp2p',
+    description: 'Python implementation of libp2p',
+    url: 'https://github.com/libp2p/py-libp2p/pulls?q=is%3Apr+is%3Aclosed+bomanaps'
+  },
+  {
+    name: 'Lighthouse Agent Tooling',
+    description: 'MCP connectors and AI-native developer tools',
+    url: 'https://github.com/Patrick-Ehimen/lighthouse-agent-tooling'
+  },
+];
+
+const speakingEvents = [
+  {
+    event: 'Devcon 7 Bangkok',
+    location: 'Bangkok, Thailand',
+    year: '2024',
+    type: 'Speaker',
+    youtubeUrl: 'https://www.youtube.com/embed/_2fNWYoBrT8',
+    images: [
+      '/images/devcon-bangkok-1.jpg',
+      '/images/devcon-bangkok-2.jpg',
+      '/images/devcon-bangkok-3.jpg',
+      '/images/devcon-bangkok-4.jpg'
+    ]
+  },
+  {
+    event: 'WiEP Brunch @ Devconnect Argentina',
+    location: 'Buenos Aires, Argentina',
+    year: '2024',
+    type: 'Speaker',
+    youtubeUrl: 'https://www.youtube.com/embed/MiYQ_P7vtEQ',
+    images: [
+      '/images/devconnect-arg-1.jpg',
+      '/images/devconnect-arg-2.jpg',
+      '/images/devconnect-arg-3.jpg',
+      '/images/devconnect-arg-4.jpg'
+    ]
+  },
+  {
+    event: 'WomenHub X Open Source Hub',
+    location: 'Buenos Aires, Argentina',
+    year: '2024',
+    type: 'Speaker',
+    twitterUrls: [
+      'https://x.com/_sdav/status/1991558685043327223',
+      'https://x.com/powerhousedao/status/1989476007049416965'
+    ],
+    youtubeUrl: '',
+    images: [
+      '/images/womenhub-osh-1.jpg',
+      '/images/womenhub-osh-2.jpg',
+      '/images/womenhub-osh-3.jpg',
+      '/images/womenhub-osh-4.jpg',
+      '/images/womenhub-osh-5.jpg',
+      '/images/womenhub-osh-6.jpg'
+    ]
+  }
+];
+
+const volunteerEvents = [
+  { event: 'DeFi Security Summit Bangkok', location: 'Bangkok, Thailand' },
+  { event: 'DeFi Security Summit Argentina', location: 'Buenos Aires, Argentina' },
+  { event: 'Devconnect', location: 'Buenos Aires, Argentina' }
+];
+---
+
+<Layout title="Mercy Boma Naps-Nkari">
+  <!-- Top Navigation -->
+  <nav class="flex flex-wrap gap-4 text-lg mb-16">
+    {navLinks.map((link, index) => (
+      <>
+        <a
+          href={link.url}
+          target={link.url.startsWith('http') || link.url.endsWith('.pdf') ? '_blank' : undefined}
+          rel={link.url.startsWith('http') ? 'noopener noreferrer' : undefined}
+          class="hover:underline underline-offset-4"
+        >
+          {link.label}
+        </a>
+        {index < navLinks.length - 1 && <span style="color: var(--text-muted);">•</span>}
+      </>
+    ))}
+  </nav>
+
+  <!-- Hero Section -->
+  <header class="mb-16">
+    <h1 class="text-4xl font-bold mb-4" style="color: var(--text-primary);">
+      Mercy Boma Naps-Nkari
+    </h1>
+    <p class="italic text-xl" style="color: var(--text-secondary);">
+      Distributed systems engineer and security researcher specializing in building decentralized infrastructure and consensus mechanisms.
+    </p>
+  </header>
+
+  <!-- About Section -->
+  <section class="mb-16">
+    <p style="color: var(--text-secondary);" class="leading-relaxed text-lg">
+      I work on distributed systems and Ethereum consensus protocols. My focus is on
+      scaling and decentralizing Ethereum through provable ZK-VM protocols. I'm passionate
+      about open-source contribution and mentoring developers entering the protocol space.
+    </p>
+  </section>
+
+  <!-- Currently Section -->
+  <section class="mb-16">
+    <h2 class="text-lg font-bold uppercase tracking-wider mb-4" style="color: var(--text-muted);">
+      Currently
+    </h2>
+    <p style="color: var(--text-secondary);">
+      Building <a href="https://github.com/blockblaz/zeam" target="_blank" rel="noopener noreferrer" class="hover:underline">Zeam</a> —
+      a production-grade Zig implementation of Beam Chain, a ZK-based Ethereum consensus protocol.
+    </p>
+    <p class="mt-2" style="color: var(--text-secondary);">
+      Cohort 4 Co-Lead at <span style="color: var(--text-primary);">Women in Ethereum Protocol (WiEP)</span> —
+      onboarding women into Ethereum protocol development.
+    </p>
+  </section>
+
+  <!-- Open Source Section -->
+  <section class="mb-16">
+    <h2 class="text-lg font-bold uppercase tracking-wider mb-6" style="color: var(--text-muted);">
+      Open Source
+    </h2>
+    <ul class="space-y-3">
+      {openSourceProjects.map(project => (
+        <li>
+          <a
+            href={project.url}
+            target="_blank"
+            rel="noopener noreferrer"
+            class="hover:underline"
+          >
+            {project.name}
+          </a>
+          <span style="color: var(--text-muted);"> — </span>
+          <span style="color: var(--text-secondary);">{project.description}</span>
+        </li>
+      ))}
+    </ul>
+  </section>
+
+  <!-- Speaking & Events Section -->
+  <section class="mb-16">
+    <h2 class="text-lg font-bold uppercase tracking-wider mb-6" style="color: var(--text-muted);">
+      Speaking & Events
+    </h2>
+
+    <div class="space-y-6 mb-8">
+      {speakingEvents.map(event => (
+        <div class="p-4 rounded-lg" style="background-color: var(--bg-secondary); border: 1px solid var(--border-color);">
+          <div class="flex justify-between items-start mb-2">
+            <div>
+              <h3 class="font-medium" style="color: var(--text-primary);">{event.event}</h3>
+              <p style="color: var(--text-muted);">{event.location} {event.year && `• ${event.year}`}</p>
+            </div>
+            <span class="text-xs px-2 py-1 rounded" style="background-color: var(--accent); color: white;">
+              {event.type}
+            </span>
+          </div>
+
+          {event.youtubeUrl ? (
+            <div class="mt-4 aspect-video rounded overflow-hidden">
+              <iframe
+                width="100%"
+                height="100%"
+                src={event.youtubeUrl}
+                frameborder="0"
+                allowfullscreen
+                class="rounded"
+              ></iframe>
+            </div>
+          ) : event.twitterUrls && event.twitterUrls.length > 0 ? (
+            <div class="mt-4 flex flex-wrap gap-2">
+              {event.twitterUrls.map((url: string, i: number) => (
+                <a
+                  href={url}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  class="flex items-center gap-2 p-3 rounded hover:opacity-80 transition-opacity"
+                  style="background-color: var(--border-color);"
+                >
+                  <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
+                  <span class="text-sm">View on X</span>
+                </a>
+              ))}
+            </div>
+          ) : event.twitterUrl ? (
+            <a
+              href={event.twitterUrl}
+              target="_blank"
+              rel="noopener noreferrer"
+              class="mt-4 block p-4 rounded hover:opacity-80 transition-opacity"
+              style="background-color: var(--border-color);"
+            >
+              <div class="flex items-center gap-2">
+                <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
+                <span>View on X</span>
+              </div>
+            </a>
+          ) : (
+            <div class="mt-4 aspect-video rounded flex items-center justify-center" style="background-color: var(--border-color); color: var(--text-muted);">
+              Video coming soon
+            </div>
+          )}
+
+          {event.images && event.images.length > 0 ? (
+            <div class="mt-4 grid grid-cols-2 gap-2">
+              {event.images.map((img: string) => (
+                <img src={img} alt={event.event} class="rounded w-full h-40 object-cover" />
+              ))}
+            </div>
+          ) : (
+            <div class="mt-4 h-32 rounded flex items-center justify-center" style="background-color: var(--border-color); color: var(--text-muted);">
+              Photos coming soon
+            </div>
+          )}
+        </div>
+      ))}
+    </div>
+
+    <h3 class="text-lg font-medium mb-3" style="color: var(--text-primary);">Volunteered</h3>
+    <ul class="space-y-2">
+      {volunteerEvents.map(event => (
+        <li style="color: var(--text-secondary);">
+          {event.event} — {event.location}
+        </li>
+      ))}
+    </ul>
+  </section>
+
+  <!-- Writings Section -->
+  <section class="mb-16" id="writings">
+    <h2 class="text-lg font-bold uppercase tracking-wider mb-4" style="color: var(--text-muted);">
+      Writings
+    </h2>
+    <div class="flex gap-4">
+      <a
+        href="https://hackmd.io/@bomanaps"
+        target="_blank"
+        rel="noopener noreferrer"
+        class="hover:underline"
+      >
+        HackMD
+      </a>
+      <span style="color: var(--text-muted);">•</span>
+      <a
+        href="https://hashnode.com/@Bomanaps"
+        target="_blank"
+        rel="noopener noreferrer"
+        class="hover:underline"
+      >
+        Hashnode
+      </a>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="pt-8" style="color: var(--text-muted);">
+    <p>Owerri, Nigeria</p>
+  </footer>
+</Layout>
